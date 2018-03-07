@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# Example rerun command:
+#	rerun -p '*.py' -cx -- ./test_hello.py -v
+
 import unittest
 from hello import greet, hello
 
@@ -7,6 +10,8 @@ class TestHello(unittest.TestCase):
 
     def test_hello(self):
         self.assertEqual(hello(), 'Hello', 'says hello')
+
+class TestHelloGreetings(unittest.TestCase):
 
     def test_greet(self):
         self.assertEqual(greet('Alice'), 'Hello, Alice!', 'greet someone')
