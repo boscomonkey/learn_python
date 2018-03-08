@@ -91,13 +91,6 @@ def testRandomAverages():
 
     return average_time - (fake_time.time() - FakeTime().time()) / number_of_times
 
-def runMeasure(fnFakeTime, repeats=1):
-    fake_time = FakeTime()
-    saved_time, time.time = time.time, fake_time.time
-    average_time = measure(lambda: fnFakeTime(fake_time), repeats)
-    time.time = saved_time
-    return average_time
-
 
 if __name__ == '__main__':
     import doctest
