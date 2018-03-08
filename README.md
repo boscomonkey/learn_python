@@ -2,7 +2,7 @@
 
 Learn Python by writing tests first and then implementing the solution as per [testfirst.org](http://testfirst.org/). Ported from Alex Chaffee's [learn_ruby](https://github.com/alexch/learn_ruby).
 
-The lessons are stored in distinct directory, numbered in order of increasing difficulty:
+The lessons are stored in distinct directories, numbered in order of increasing difficulty:
 
 * 00_hello
 * 01_temperature
