@@ -13,21 +13,11 @@
 #
 # This is (a stripped down version of) an actual useful concept: a function that runs a block of code and then tells you how long it took to run.
 
+from fake_time import FakeTime
 from performance_monitor import measure
 import random
 import time
 
-class FakeTime:
-    eleven_am = time.strptime('Thu Mar  8 11:00:00 2018')
-
-    def __init__(self):
-        self.epoch_seconds = time.mktime(FakeTime.eleven_am)
-
-    def increment(self, seconds):
-        self.epoch_seconds += seconds
-
-    def time(self):
-        return self.epoch_seconds
 
 def testFakeTime(fn):
     """
