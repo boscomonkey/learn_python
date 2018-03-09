@@ -4,7 +4,7 @@
 #	rerun -p '*.py' -cx -- python test_temperature_object.py -v
 
 
-from temperature import Temperature
+from temperature import Temperature, Celsius, Fahrenheit
 import unittest
 
 class TestTemperature(unittest.TestCase):
@@ -62,6 +62,34 @@ class TestTemperature(unittest.TestCase):
                              '50 f should equal 50 f')
         self.assertEqual(Temperature.from_fahrenheit(50).in_celsius(), 10,
                              '50 f should equal 10 c')
+
+    def test_120_utility_class_method_ftoc(self):
+        self.assertEqual(Temperature.ftoc(50), 10,
+                             'ftoc(50) should equal 10')
+
+    def test_130_utility_class_method_ctof(self):
+        self.assertEqual(Temperature.ctof(50), 122,
+                             'ctof(50) should equal 122')
+
+    def test_140_celsius_subclass_constructed_in_degrees_c(self):
+        self.assertEqual(Celsius(50).in_celsius(), 50,
+                             '50 c should equal 50 c')
+        self.assertEqual(Celsius(50).in_fahrenheit(), 122,
+                             '50 c should equal 122 f')
+
+    def test_150_celsius_is_a_temperature_subclass(self):
+        self.assertIsInstance(Celsius(50), Temperature,
+                                  'Celsius is a Temperature subclass')
+
+    def test_160_fahrenheit_subclass_constructed_in_degrees_f(self):
+        self.assertEqual(Fahrenheit(50).in_fahrenheit(), 50,
+                             '50 f should equal 50 f')
+        self.assertEqual(Fahrenheit(50).in_celsius(), 10,
+                             '50 f should equal 10 c')
+
+    def test_170_fahrenheit_is_a_temperature_subclass(self):
+        self.assertIsInstance(Fahrenheit(50), Temperature,
+                                  'Fahrenheit is a Temperature subclass')
 
 
 if __name__ == '__main__':
