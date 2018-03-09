@@ -2,20 +2,32 @@ import re
 
 class Book:
 
-    def __init__(self):
-        self._title = None
+    def __setattr__(self, name, value):
+        """Override __setattr__ to handle capitalization of titles
 
-    def title(self):
-        return self._title
+        >>> b = Book()
+        >>> b.age = 666
+        >>> b.age
+        666
 
-    def setTitle(self, book_title):
-        self._title = self.capitalize(book_title)
+        >>> b.author = 'george washington'
+        >>> b.author
+        'george washington'
+
+        >>> b.title = 'little mermaid'
+        >>> b.title
+        'Little Mermaid'
+        """
+        if name == 'title':
+            value = self.capitalize(value)
+
+        super().__setattr__(name, value)
 
     ##
     ## internal
     ##
 
-    exceptions = {
+    DO_NOT_CAPITALIZE = {
         'the', 'a', 'an',	# articles
         'and',				# conjunctions
         'in', 'of'			# prepositions
@@ -30,10 +42,14 @@ class Book:
                 buffer.append(token.capitalize())
                 continue
 
-            if token in type(self).exceptions:
+            if token in type(self).DO_NOT_CAPITALIZE:
                 buffer.append(token)
             else:
                 buffer.append(token.capitalize())
 
         return ' '.join(buffer)
 
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
