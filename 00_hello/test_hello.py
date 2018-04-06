@@ -8,15 +8,13 @@ from hello import greet, hello
 
 class TestHello(unittest.TestCase):
 
-    def test_hello(self):
+    def test_010_hello(self):
         self.assertEqual(hello(), 'Hello', 'says hello')
 
-class TestHelloGreetings(unittest.TestCase):
-
-    def test_greet(self):
+    def test_020_greet(self):
         self.assertEqual(greet('Alice'), 'Hello, Alice!', 'greet someone')
         
-    def test_greet_another(self):
+    def test_030_greet_another(self):
         self.assertEqual(greet('Bob'), 'Hello, Bob!', 'greet someone else')
 
 if __name__ == '__main__':
