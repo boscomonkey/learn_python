@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
-# Example rerun command:
-#	rerun -p '*.py' -cx -- ./test_hello.py -v
+# This driver is executable from the command line.  Use the Python
+# "rerun" package to re-run the driver whenever files in this
+# directory (and its recursive children) are changed or added.
+#
+#   rerun -v ./test_hello.py
 
 import unittest
 from hello import greet, hello
