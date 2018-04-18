@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
-# Example rerun command:
-#	rerun -p '*.py' -cx -- python test_temperature_object.py -v
+# This driver is executable from the command line.  Use the Python
+# "rerun" package to re-run the driver whenever files in this
+# directory (and its recursive children) are changed or added.
+#
+#   rerun -v ./test_temperature_object.py
 
 
 from temperature import Temperature, Celsius, Fahrenheit
