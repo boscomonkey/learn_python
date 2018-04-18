@@ -50,8 +50,8 @@ def remaining_letters(word, count=1):
 
 def translate_word(word_plus):
     match = re.compile('^([A-Za-z]+)(.*)').match(word_plus)
-    word = match[1]
-    punctuation = match[2]
+    word = match.group(1)
+    punctuation = match.group(2)
 
     consonants = find_longest_consonant_prefix(word)
     clength = len(consonants)
