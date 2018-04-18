@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
-# Example rerun command:
-#	rerun -p '*.py' -cx -- ./test_pig_latin.py -v
+# This driver is executable from the command line.  Use the Python
+# "rerun" package to re-run the driver whenever files in this
+# directory (and its recursive children) are changed or added.
+#
+#   rerun -v ./test_pig_latin.py
 
 import unittest
 from pig_latin import translate
@@ -27,38 +30,38 @@ from pig_latin import translate
 
 class TestPigLatin(unittest.TestCase):
 
-    def test_translates_a_word_beginning_with_a_vowel(self):
+    def test_010_translates_a_word_beginning_with_a_vowel(self):
         self.assertEqual(translate('apple'), 'appleay')
 
-    def test_translates_a_word_beginning_with_a_consonant(self):
+    def test_020_translates_a_word_beginning_with_a_consonant(self):
         self.assertEqual(translate('banana'), 'ananabay')
 
-    def test_translates_a_word_beginning_with_two_consonants(self):
+    def test_030_translates_a_word_beginning_with_two_consonants(self):
         self.assertEqual(translate('cherry'), 'errychay')
 
-    def test_translates_two_words(self):
+    def test_040_translates_two_words(self):
         self.assertEqual(translate('eat pie'), 'eatay iepay')
 
-    def test_translates_a_word_beginning_with_three_consonants(self):
+    def test_050_translates_a_word_beginning_with_three_consonants(self):
         self.assertEqual(translate('three'), 'eethray')
 
-    def test_counts_sch_as_single_phoneme(self):
+    def test_060_counts_sch_as_single_phoneme(self):
         self.assertEqual(translate('school'), 'oolschay')
 
-    def test_counts_qu_as_single_phoneme(self):
+    def test_070_counts_qu_as_single_phoneme(self):
         self.assertEqual(translate('quiet'), 'ietquay')
 
-    def test_counts_qu_as_single_phoneme_even_when_preceded_by_consonant(self):
+    def test_080_counts_qu_as_single_phoneme_even_when_preceded_by_consonant(self):
         self.assertEqual(translate('square'), 'aresquay')
 
-    def test_translates_many_words(self):
+    def test_090_translates_many_words(self):
         self.assertEqual(translate('the quick brown fox'), 'ethay ickquay ownbray oxfay')
 
     # Test-driving bonus:
     # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
     # * retain the punctuation from the original phrase
 
-    def test_translates_capitalized_words(self):
+    def test_100_translates_capitalized_words(self):
         self.assertEqual(translate('Apple'), 'Appleay')
         self.assertEqual(translate('Banana'), 'Ananabay')
         self.assertEqual(translate('Cherry'), 'Errychay')
@@ -69,7 +72,7 @@ class TestPigLatin(unittest.TestCase):
         self.assertEqual(translate('Square'), 'Aresquay')
         self.assertEqual(translate('The Quick Brown Fox'), 'Ethay Ickquay Ownbray Oxfay')
 
-    def test_retains_punctuation_from_original_phrase(self):
+    def test_110_retains_punctuation_from_original_phrase(self):
         self.assertEqual(translate('Apple!'), 'Appleay!')
         self.assertEqual(translate('Banana!!'), 'Ananabay!!')
         self.assertEqual(translate('Cherry!!!'), 'Errychay!!!')

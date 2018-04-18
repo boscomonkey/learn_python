@@ -7,7 +7,7 @@
 
 index = 10
 increment = 10
-re = %r(^(\s*def\s+test_)(\w.*))
+re = %r(^(\s*def\s+test_)([A-Za-z].*))
 
 ARGF.each_line {|line|
   m = line.match re
