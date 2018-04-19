@@ -1,11 +1,18 @@
 #!/usr/bin/env python
 
-# Example rerun command:
-#	rerun -p '*.py' -cx -- python test_silly_lambdas.py -v
+# This driver is executable from the command line.  Use the Python
+# "rerun" package to re-run the driver whenever files in this
+# directory (and its recursive children) are changed or added.
+#
+#   rerun -v './test_silly_lambdas.py -v'
+#
+# This test suite uses doctest instead of TestCase; thus, it needs a
+# '-v' argument to indicate when all tests pass.
+
 
 from silly_lambdas import reverser, adder, repeater
 
-def test01Reverser():
+def test_10_reverser():
     """
     >>> reverser(lambda: 'hello')	# reverses the string returned by the default block
     'olleh'
@@ -14,7 +21,7 @@ def test01Reverser():
     """
     pass
 
-def test02Adder():
+def test_20_adder():
     """
     >>> adder(lambda: 5)	# adds one to the value returned by the default block
     6
@@ -23,13 +30,13 @@ def test02Adder():
     """
     pass
 
-def testRepeater(num=1):
+def test_03_repeater(num=1):
     """
-    >>> testRepeater()	# executes the default block
+    >>> test_03_repeater()	# executes the default block
     667
-    >>> testRepeater(3)	# executes the default block 3 times
+    >>> test_03_repeater(3)	# executes the default block 3 times
     669
-    >>> testRepeater(10)	# executes the default block 10 times
+    >>> test_03_repeater(10)	# executes the default block 10 times
     676
     """
     class Counter:
