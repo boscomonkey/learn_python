@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
-# Example rerun command:
-#	rerun -p '*.py' -cx -- ./test_performance_monitor.py -v
+# This driver is executable from the command line.  Use the Python
+# "rerun" package to re-run the driver whenever files in this
+# directory (and its recursive children) are changed or added.
+#
+#   rerun -v ./test_performance_monitor.py
 
 import random
 import time
